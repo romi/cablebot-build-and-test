@@ -13,6 +13,14 @@ target_link_libraries( cablebot_example
                         cablebot
                         stdc++fs)
 
+# Add dependent libs as necessary
+#target_link_libraries( cablebot_example
+#        rpp
+#        rcompp-lite
+#        romi
+#        cablebot
+#        stdc++fs)
+
 if(BUILD_TESTS)
     add_subdirectory(test)
 endif()
