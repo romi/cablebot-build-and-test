@@ -2,13 +2,13 @@
 
 | |master| |ci_dev| |
 |:---|:---|:---|:---|:---|
-|**build & test**|![Build Status](https://github.com/romi/cablbot-build-and-test/workflows/CI/badge.svg?branch=master)| |![Build Status](https://github.com/romi/cablbot-build-and-test/workflows/CI/badge.svg?branch=ci_dev)| | 
+|**build & test**|![Build Status](https://github.com/romi/cablebot-build-and-test/workflows/CI/badge.svg?branch=master)| |![Build Status](https://github.com/romi/cablebot-build-and-test/workflows/CI/badge.svg?branch=ci_dev)| | 
 |**libr**|![Build Status](https://github.com/romi/libr/workflows/CI/badge.svg?branch=master)|[![codecov](https://codecov.io/gh/romi/libr/branch/master/graph/badge.svg)](https://codecov.io/gh/romi/libr)|![Build Status](https://github.com/romi/libr/workflows/CI/badge.svg?branch=ci_dev)|[![codecov](https://codecov.io/gh/romi/libr/branch/ci_dev/graph/badge.svg)](https://codecov.io/gh/romi/libr)
 |**librcom**|![Build Status](https://github.com/romi/librcom/workflows/CI/badge.svg?branch=master)|[![codecov](https://codecov.io/gh/romi/librcom/branch/master/graph/badge.svg)](https://codecov.io/gh/romi/librcom) |![Build Status](https://github.com/romi/librcom/workflows/CI/badge.svg?branch=ci_dev)|[![codecov](https://codecov.io/gh/romi/librcom/branch/ci_dev/graph/badge.svg)](https://codecov.io/gh/romi/librcom)
 |**libromi**|![Build Status](https://github.com/romi/libromi/workflows/CI/badge.svg?branch=master)|[![codecov](https://codecov.io/gh/romi/libromi/branch/master/graph/badge.svg)](https://codecov.io/gh/romi/libromi)|![Build Status](https://github.com/romi/libromi/workflows/CI/badge.svg?branch=ci_dev)|[![codecov](https://codecov.io/gh/romi/libromi/branch/ci_dev/graph/badge.svg)](https://codecov.io/gh/romi/libromi)
 
-The purpose of this repo is to provide a single point of interaction to download, build, test, and optionally generate a code coverage test report for the cablbot and all its dependencies.
-Since the cablbot uses CMake as it's build system, CMake is also used to download the project and dependencies in addition to building the bot.
+The purpose of this repo is to provide a single point of interaction to download, build, test, and optionally generate a code coverage test report for the cablebot and all its dependencies.
+Since the cablebot uses CMake as it's build system, CMake is also used to download the project and dependencies in addition to building the bot.
 
 This ReadMe file gives a detailed description of the download / build / test functionality as well as configuration / build information.
 
@@ -19,14 +19,14 @@ You'll also need to install the fluidsynth-dev package for development: **sudo a
 ## Getting Started
 As you have probably already noticed, this repo contains a number of submodules. The libraries used in this project all have a dependency on the google test suite
 as well as LCOV.
-This project uses CMake to download these external dependencies required to build the cablbot with minimal user intervention required.
+This project uses CMake to download these external dependencies required to build the cablebot with minimal user intervention required.
 Note: Everything is currently a debug build. This will change as the project progresses and is more thoroughly tested.
 
 1) Clone this repo. Since it contains submodules use the command:   
-   **git clone --branch ci_dev --recurse-submodules https://github.com/romi/cablbot-build-and-test.git**  
+   **git clone --branch ci_dev --recurse-submodules https://github.com/romi/cablebot-build-and-test.git**  
    This will clone all the submodules, but it will leave the submodules in a detached state. This is normal. Don't panic! Leave that to me.
-2) From a terminal in your favourite flavour of linux, change into the cablbot-build-and-test directory.  
-   **cd cablbot-build-and-test**
+2) From a terminal in your favourite flavour of linux, change into the cablebot-build-and-test directory.  
+   **cd cablebot-build-and-test**
 3) Now we want to setup the out of source build:  
    **mkdir my-build-directory**  
    **cd my-build-directory**
@@ -49,10 +49,10 @@ Now you will notice that during the configure step (4) it took a little longer t
 The supporting test software (google test, LCOV etc) are downloaded, and the required config files depending on your build type are created. **phew!**
 
 ## Now my repo looks busy. Whats going on?
-The first thing you'll notice is that there is a lot more in your cablbot-test-and-build directory. Good!
+The first thing you'll notice is that there is a lot more in your cablebot-test-and-build directory. Good!
 Let's explain the structure a bit.
 
-### cablbot-test-and-build/thirdparty/
+### cablebot-test-and-build/thirdparty/
 When the cmake is run to download and configure the system, you don't necessarily want to re-download all the supporting
 libs every time you configure a build locally. To save your bandwidth, and a small portion of your sanity,
 supporting libs are downloaded to named folders at the root level under the <thirdparty>/ directory.
@@ -64,9 +64,9 @@ Keeping the downloads in a separate download area saves re-downloading every tim
 ### Submodules
 The romi rover project is dependent on a number of libries.
 
-cablbot-test-and-build/libr/  (soon to be depricated)
-cablbot-test-and-build/librcom/
-cablbot-test-and-build/libromi/
+cablebot-test-and-build/libr/  (soon to be depricated)
+cablebot-test-and-build/librcom/
+cablebot-test-and-build/libromi/
 
 Each of these libraries is designed such that the individual library can be cloned and used independently of this super project,
 however we recommend you use this project for any development. If you poke around in the submodule CMakeLists.txt files
@@ -79,7 +79,7 @@ The superproject (the project you are looking at now), is just a snapshot of the
 So lets look at a working practice for making a change to **libr** contained in this project.  
 You've just cloned and built the project using the fantastically clear(!) instructions above. Now we want to make a change to libr.
 1) The first thing we need to do is tell git what branch we're working on as submodules are cloned in a detached head state.  
-   **cd cablbot-build-and-test/libr**  
+   **cd cablebot-build-and-test/libr**  
    **git checkout ci_dev**
 2) Now we make our changes in libr. We build and test them (using the commands above), get the code reviewed (more on that later).
    Were happy that everything is good and want to push back to the repo. We do that using the normal git flow.
@@ -88,7 +88,7 @@ You've just cloned and built the project using the fantastically clear(!) instru
 3) Now this is where things get interesting. If anyone else were to pull the super project at this point, and clone everything they would still get the old version of libr.
    This is because, as we said above, the superproject is linked to specific commits of the submodule. So lets update this superproject to point to the
    new libr we just changed.  
-   **cd cablbot-build-and-test**
+   **cd cablebot-build-and-test**
 4) If you check the git status at this point you'll see that the super-project knows there are changes in the submodule.  
    **git status** returns info similar to  
    *modified:   libr (modified content)*
